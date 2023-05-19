@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    body {
+      margin: 0;
+    }
+
+    .grid-container {
+      display: grid;
+      gap: 10px;
+      border: 3rem solid slategray;
+      height: 100vh;
+      width: 100vw;
+      box-sizing: border-box;
+      background-color: black;
+    }
+
+    #pacman {
+      position: absolute;
+      top: 0;
+      left: 0;
+      animation: bounce 2s infinite linear;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grid-container" id="game-container">
+    <div id="grid-item">
+      <svg id="base-svg"></svg>
+    </div>
+  </div>
+  <script language="javascript" src="functions.js"></script>
+  <script language="javascript" src="pacman.js"></script>
+</body>
+
+</html>
