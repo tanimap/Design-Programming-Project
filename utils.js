@@ -1,20 +1,32 @@
 "use strict";
+// Beige only
+function beige() {
+  // Process
+  let r2 = "250"
+  let g2 = "220";
+  let b2 = "202";
+
+  // Output
+  return `rgb(${r2}, ${g2}, ${b2})`;
+}
+
 // Yellow only
 function yellow() {
   // Process
   let r3 = "255";
-  let g3 = "238";
-  let b3 = "0";
+  let g3 = "239";
+  let b3 = "100";
 
   // Output
   return `rgb(${r3}, ${g3}, ${b3})`;
 }
 
-function gray(r, g, b) { // maybe this can be makeRGB() but only with 2 colors
+// Blue only
+function blue(r, g, b) {
   // Process
-  let r4 = "222";
-  let g4 = "214";
-  let b4 = "204";
+  let r4 = "26";
+  let g4 = "167";
+  let b4 = "236";
 
   // Output
   return `rgb(${r4}, ${g4}, ${b4})`;
@@ -37,10 +49,13 @@ function createPacman(svg) {
   pacman.setAttribute("r", 40);
   pacman.setAttribute("cx", 100);
   pacman.setAttribute("cx", 40);
-  pacman.setAttribute("fill", yellow());
+  pacman.setAttribute("fill", beige());
   svg.appendChild(pacman);
   return pacman;
 }
+
+// For random color generating between blue and yellow
+// Create an "odd" and "even" function using arrays and ranges
 
 // This generates different sized squares
 function generateRandomObstacle(svg, obstacleCoords) {
@@ -57,7 +72,7 @@ function generateRandomObstacle(svg, obstacleCoords) {
   obstacle.setAttribute("y", y);
 
   // Color of the people
-  obstacle.setAttribute("fill", gray()); // I think this can be makeRGB() but limit the RGB code to just 2 colors
+  obstacle.setAttribute("fill", blue()); // I think this can be makeRGB() but limit the RGB code to just 2 colors
 
   // Is this padding that makes the character hit the squares?
   const widthPadding = obstacleSize * 0.7;

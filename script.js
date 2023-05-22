@@ -11,7 +11,7 @@ let obstacleCoords = [];
 
 let svg = initializeSvg();
 let pacman = createPacman(svg);
-for (let i = 0; i < 50; i++) {
+for (let i = 0; i < 30; i++) {
   obstacleCoords = generateRandomObstacle(svg, obstacleCoords);
 }
 
