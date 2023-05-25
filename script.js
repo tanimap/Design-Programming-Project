@@ -8,11 +8,16 @@ let height = gameContainer.clientHeight;
 // we enter our obstacle coordinates in our obstacle map to know
 // when to avoid things.
 let obstacleCoords = [];
-
+//I created two forloops each 15 of different colors. 
 let svg = initializeSvg();
 let pacman = createPacman(svg);
-for (let i = 0; i < 30; i++) {
+for (let i = 0; i < 15; i++)  {
   obstacleCoords = generateRandomObstacle(svg, obstacleCoords);
+  obstacleCoords.setAttribute("fill", yellow());
+}
+for (let i = 0; i < 15; i++)  {
+  obstacleCoords = generateRandomObstacle(svg, obstacleCoords);
+  obstacleCoords.setAttribute("fill", blue());
 }
 
 let x = 50;

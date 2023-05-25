@@ -72,14 +72,15 @@ function generateRandomObstacle(svg, obstacleCoords) {
   obstacle.setAttribute("y", y);
 
   //start of the new color code
-  const totalObstacles = obstacleCoords.length;
-  const halfObstacles = Math.floor(totalObstacles / 2);
-  
-  if (obstacleCoords.length < halfObstacles) {
-    obstacle.setAttribute("fill", blue());
-  } else {
-    obstacle.setAttribute("fill", yellow());
-  }
+  //have to ensure the varaible is a width or a number 
+  // const totalObstacles = obstacleCoords.length;
+  // const halfObstacles = Math.floor(totalObstacles / 2);
+  // //We need to change the logic inside the if statement cause right now it only gives one result. The second color. 
+  // if (obstacleCoords.length < halfObstacles) {
+  //   obstacle.setAttribute("fill", yellow());
+  // } else {
+  //   obstacle.setAttribute("fill", blue());
+  // }
 
   // Add the obstacle to the SVG canvas
   svg.appendChild(obstacle);
