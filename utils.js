@@ -71,8 +71,23 @@ function generateRandomObstacle(svg, obstacleCoords) {
   obstacle.setAttribute("x", x);
   obstacle.setAttribute("y", y);
 
-  // Color of the people
-  obstacle.setAttribute("fill", blue()); // I think this can be makeRGB() but limit the RGB code to just 2 colors
+  //start of the new color code
+  const totalObstacles = obstacleCoords.length;
+  const halfObstacles = Math.floor(totalObstacles / 2);
+  
+  if (obstacleCoords.length < halfObstacles) {
+    obstacle.setAttribute("fill", blue());
+  } else {
+    obstacle.setAttribute("fill", yellow());
+  }
+
+  // Add the obstacle to the SVG canvas
+  svg.appendChild(obstacle);
+
+  return obstacle;
+
+  // Color of the people - previous code below, this has now been replaced by if else code above
+  //obstacle.setAttribute("fill", blue()); // I think this can be makeRGB() but limit the RGB code to just 2 colors
 
   // Is this padding that makes the character hit the squares?
   const widthPadding = obstacleSize * 0.7;
