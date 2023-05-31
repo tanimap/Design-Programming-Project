@@ -85,7 +85,7 @@ class Square {
     this.obstacle.setAttribute("fill", color);
   }
 
-  // Is a point in a square?
+  // Is a point in a square? Is the center of the circle somewhere inside the square?
   isPointInside(x, y) {
     if (x > this.x && y > this.y && x < this.x + this.size && y < this.y + this.size) {
       return true
@@ -147,3 +147,45 @@ function generateRandomObstacle(svg, obstacleCoords) {
   svg.appendChild(obstacle);
   return obstacleCoords;
 } */
+
+
+/* // Pacman
+let pacman = document.getElementById("pacman");
+let pacmanColor = "red"; // Initial color of pacman
+
+// Array of squares
+let squares = []; // Add your squares to this array
+
+// Function to check if cx is inside a square
+function checkCollision(//parameter - list of obstacles (obstacleCoords)//) {
+  let cx = parseInt(pacman.getAttribute("cx"));
+
+  for (let i = 0; i < squares.length; i++) {
+  // squares[i].isPointInside(cx, cy) - asking a specific square is that square inside the circle 
+  // (returns the boulean method) - true or false
+    let square = squares[i];
+    let squareX = square.x;
+    let squareWidth = square.width;
+
+    // Check if cx is inside the square
+    let change = 
+    if (cx > squareX && cx < squareX + squareWidth) {
+      // Pacman is inside the square, change its color
+      pacmanColor = "blue";
+      break; // Exit the loop if a collision is detected
+    } else {
+      pacmanColor = "red"; // Pacman is not inside any square, revert to the initial color
+    }
+  }
+
+  // Update the color of pacman
+  pacman.setAttribute("fill", pacmanColor);
+}
+
+// Call the checkCollision function whenever pacman moves
+pacman.addEventListener("mousemove", checkCollision);
+
+/*
+
+So we have to make cx = obstacle.X
+
