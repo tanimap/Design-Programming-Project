@@ -48,7 +48,7 @@ function createPacman(svg) {
   let pacman = document.createElementNS("http://www.w3.org/2000/svg", "circle");
   pacman.setAttribute("r", 40);
   pacman.setAttribute("cx", 100);
-  pacman.setAttribute("cx", 40);
+  pacman.setAttribute("cy", 40);
   pacman.setAttribute("fill", beige());
   svg.appendChild(pacman);
   return pacman;
@@ -57,6 +57,61 @@ function createPacman(svg) {
 // For random color generating between blue and yellow
 // Create an "odd" and "even" function using arrays and ranges
 
+class Square {
+  constructor(svg, width, height) {
+    this.svg = svg;
+    this.width = width;
+    this.height = height;
+    this.x = x;
+    this.y = y;
+    this.create();
+  }
+
+  create() {
+    let obstacleSize = randomIntFromInterval(10, 20);
+
+    let obstacle = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+    obstacle.setAttribute("width", obstacleSize);
+    obstacle.setAttribute("height", obstacleSize);
+
+    const x = randomIntFromInterval(100, this.width);
+    const y = randomIntFromInterval(100, this.height);
+    obstacle.setAttribute("x", x);
+    obstacle.setAttribute("y", y);
+
+    this.obstacle = obstacle;
+    this.svg.appendChild(obstacle);
+  }
+
+  // store the color as a propety of the class
+  setColor(color) {
+    this.color = color;
+    this.obstacle.setAttribute("fill", color);
+  }
+
+  // Is a point in a square?
+  isPointInside(x, y) {
+    if (x > this.x && y > this.y && x < this.x + this.size && y < this.y + this.size) {
+      return true
+    } else {
+      return false
+    }
+  }
+}
+
+function generateRandomObstacle(svg, width, height) {
+  return new Square(svg, width, height);
+}
+
+function distance2d(x1, y1, x2, y2) {
+  return Math.sqrt(
+    (x2 - x1) ** 2 +
+    (y2 - y1) ** 2
+  );
+}
+
+
+/*
 // This generates different sized squares
 function generateRandomObstacle(svg, obstacleCoords) {
   let obstacleSize = randomIntFromInterval(10,20);
@@ -102,4 +157,4 @@ function generateRandomObstacle(svg, obstacleCoords) {
   });
   svg.appendChild(obstacle);
   return obstacleCoords;
-}
+} */
