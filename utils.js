@@ -99,7 +99,20 @@ function generateRandomObstacle(svg, width, height) {
   return new Square(svg, width, height);
 }
 
+// OPTION 1
+// check the radius of the circle
+// is the distance between me and the center of the square
+// instead of the square go full inside, the middle of the circle can miss the center of the square 
+//function distance2d(x1, y1, x2, y2) {
+//  return Math.sqrt(
+//    (x2 - x1)**2
+//    +
+//    (y2 - y1)**2
+//  )
+//}
 
+
+// OPTION 2: use checkCollision 
 /*
 // This generates different sized squares
 function generateRandomObstacle(svg, obstacleCoords) {
@@ -157,18 +170,23 @@ let pacmanColor = "red"; // Initial color of pacman
 let squares = []; // Add your squares to this array
 
 // Function to check if cx is inside a square
-function checkCollision(//parameter - list of obstacles (obstacleCoords)//) {
+function c(obstacleCoords) {
   let cx = parseInt(pacman.getAttribute("cx"));
 
   for (let i = 0; i < squares.length; i++) {
-  // squares[i].isPointInside(cx, cy) - asking a specific square is that square inside the circle 
+   obstacleCoords[i].isPointInside(cx, cy) 
+  //- asking a specific square is that square inside the circle 
   // (returns the boulean method) - true or false
-    let square = squares[i];
-    let squareX = square.x;
-    let squareWidth = square.width;
 
     // Check if cx is inside the square
-    let change = 
+    let intersection = obstacleCoords[i].isPointInside(cx, cy) 
+    if intersection {
+      // do something in reaction to the intersection
+    }
+    else {
+      // no collision
+    }
+    // add the size of the circle 
     if (cx > squareX && cx < squareX + squareWidth) {
       // Pacman is inside the square, change its color
       pacmanColor = "blue";
@@ -187,5 +205,4 @@ pacman.addEventListener("mousemove", checkCollision);
 
 /*
 
-So we have to make cx = obstacle.X
-
+// So we have to make cx = obstacle.X
