@@ -62,8 +62,6 @@ class Square {
     this.svg = svg;
     this.width = width;
     this.height = height;
-    this.x = x;
-    this.y = y;
     this.create();
   }
 
@@ -83,9 +81,7 @@ class Square {
     this.svg.appendChild(obstacle);
   }
 
-  // store the color as a propety of the class
   setColor(color) {
-    this.color = color;
     this.obstacle.setAttribute("fill", color);
   }
 
@@ -101,13 +97,6 @@ class Square {
 
 function generateRandomObstacle(svg, width, height) {
   return new Square(svg, width, height);
-}
-
-function distance2d(x1, y1, x2, y2) {
-  return Math.sqrt(
-    (x2 - x1) ** 2 +
-    (y2 - y1) ** 2
-  );
 }
 
 

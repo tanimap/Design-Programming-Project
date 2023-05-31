@@ -32,6 +32,7 @@ let dx = 4;
 let dy = 4;
 let direction = "horiz";
 
+/*
 function animate() {
   if (direction == "horiz") {
     x += dx;
@@ -48,10 +49,7 @@ function animate() {
   if (y < 20 || y > height - 20) {
     dy = -dy;
   }
-
-  let insideYellowObstacle = false;
-  let insideBlueObstacle = false;
-
+}
   for (let i = 0; i < obstacleCoords.length; i++) {
     let obstacle = obstacleCoords[i];
 
@@ -66,21 +64,7 @@ function animate() {
       } else {
         dy = -dy;
       }
-
-      if (obstacle.color === "yellow") {
-        insideYellowObstacle = true;
-      } else if (obstacle.color === "blue") {
-        insideBlueObstacle = true;
-      }
     }
-  }
-
-  // Change color based on obstacle color
-  if (insideYellowObstacle) {
-    pacman.setAttribute("fill", "yellow");
-  } else if (insideBlueObstacle) {
-    pacman.setAttribute("fill", "blue");
-  }
 
   // change direction randomly:
   const dir = randomIntFromInterval(1, 1000);
@@ -96,6 +80,9 @@ function animate() {
 }
 
 animate();
+*/
+
+
 
 
 
@@ -113,7 +100,7 @@ for (let i = 0; i < 15; i++)  {
 }
 */
 
-/*
+
 function animate() {
   if (direction == "horiz") {
     x += dx;
@@ -161,4 +148,4 @@ function animate() {
 }
 
 animate();
-*/
+
