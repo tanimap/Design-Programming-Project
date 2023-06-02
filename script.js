@@ -9,7 +9,7 @@ let svg = initializeSvg();
 let pacman = createPacman(svg);
 let obstacles = [];
 
-for (let i = 0; i < 15; i++) {
+for (let i = 0; i < 50; i++) {
   obstacles.push(generateRandomObstacle(svg, width, height));
 }
 
