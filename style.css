@@ -23,9 +23,11 @@ body {
 }
 
 .text-container {
-  padding: 20px;
+  padding: 10px;
   color: white;
   text-align: center;
   background-color: black;
   font-family:'Helvetica Neue', sans-serif;
+  margin-bottom: 10px;
+  
 }
