@@ -28,7 +28,7 @@ function randomIntFromInterval(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function initializeSvg() {
+function initializeSvg(width, height) {
   let svg = document.getElementById("base-svg");
   svg.setAttribute("width", width);
   svg.setAttribute("height", height);
@@ -54,11 +54,13 @@ class Square {
   }
 
   create() {
-
     // Randomizes the size of the obstacles between 10-20 pixels
     let obstacleSize = randomIntFromInterval(10, 20);
 
-    let obstacle = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+    let obstacle = document.createElementNS(
+      "http://www.w3.org/2000/svg",
+      "rect"
+    );
     obstacle.setAttribute("width", obstacleSize);
     obstacle.setAttribute("height", obstacleSize);
 
@@ -76,16 +78,22 @@ class Square {
 
   isPointInside(x, y) {
     let rect = this.obstacle.getBoundingClientRect();
-    this.x = rect.left;
-    this.y = rect.top;
+    let leftX = rect.left;
+    let rightX = leftX + rect.width;
+    let topY = rect.top;
+    let bottomY = topY + rect.height;
 
-    // This is the boolean formula that we need to call out later on 
-    // to know if the circle is colliding with the obstacle 
-    if (x > this.x && y > this.y && x < this.x + this.width && y < this.y + this.height) {
-      return true;
-    } else {
-      return false;
-    }
+    // the point is pacman's center.  pad it to reflect the whole circle.
+    let pacmanLeftX = x - 20;
+    let pacmanRightX = x + 20;
+    let pacmanTopY = y - 20;
+    let pacmanBottomY = y + 20;
+
+    // Check for overlap
+    const xOverlap = leftX < pacmanRightX && rightX > pacmanLeftX;
+    const yOverlap = topY < pacmanBottomY && bottomY > pacmanTopY;
+
+    return xOverlap && yOverlap;
   }
 
   // This changes the position of the square when the circle bumps into it
@@ -99,14 +107,10 @@ function generateRandomObstacle(svg, width, height) {
   return new Square(svg, width, height);
 }
 
-
-
-
-
 // OPTION 1
 // check the radius of the circle
 // is the distance between me and the center of the square
-// instead of the square go full inside, the middle of the circle can miss the center of the square 
+// instead of the square go full inside, the middle of the circle can miss the center of the square
 //function distance2d(x1, y1, x2, y2) {
 //  return Math.sqrt(
 //    (x2 - x1)**2
@@ -115,8 +119,7 @@ function generateRandomObstacle(svg, width, height) {
 //  )
 //}
 
-
-// OPTION 2: use checkCollision 
+// OPTION 2: use checkCollision
 /*
 // This generates different sized squares
 function generateRandomObstacle(svg, obstacleCoords) {
@@ -164,7 +167,6 @@ function generateRandomObstacle(svg, obstacleCoords) {
   svg.appendChild(obstacle);
   return obstacleCoords;
 } */
-
 
 /* // Pacman
 let pacman = document.getElementById("pacman");
